@@ -3,13 +3,13 @@ platform: x86
 configuration: Release
 
 environment:
+  APPVEYOR_SAVE_CACHE_ON_ERROR: true
   matrix:
     - PYTHON: "C:\\Python36"
 
 install:
   - set PATH=%VS140COMNTOOLS%..\IDE;%PATH%
-  - devenv.exe /?
-  - mkdir blender-build
+  - IF NOT EXIST %APPVEYOR_BUILD_FOLDER% mkdir blender-build
   - cd blender-build
   - mkdir build
   - git clone git://git.blender.org/blender.git
@@ -18,7 +18,10 @@ install:
   - git submodule foreach git checkout master
   - git submodule foreach git pull --rebase origin master
   - cd ..
-  - svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14
+  - IF NOT EXIST %APPVEYOR_BUILD_FOLDER%\blender-build\lib svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14
   - cd build
   - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DWITH_PYTHON_INSTALL=OFF -DPYTHON_VERSION=3.6 ../blender
   - devenv.exe Blender.sln /Build Release /Project INSTALL
+
+cache:
+  - blender-build\lib
