@@ -12,7 +12,7 @@ install:
   - IF NOT EXIST %APPVEYOR_BUILD_FOLDER%\blender-build mkdir blender-build
   - cd blender-build
   - mkdir build
-  - git clone git://git.blender.org/blender.git
+  - IF NOT EXIST %APPVEYOR_BUILD_FOLDER%\blender-build\blender git clone git://git.blender.org/blender.git
   - cd blender
   - git submodule update --init --recursive
   - git submodule foreach git checkout master
@@ -25,3 +25,4 @@ install:
 
 cache:
   - blender-build\lib
+  - blender-build\blender
