@@ -8,7 +8,7 @@ environment:
 
 install:
   - set PATH=%VS140COMNTOOLS%..\IDE;%PATH%
-  - devenv.exe
+  - devenv.exe /?
   - mkdir blender-build
   - cd blender-build
   - mkdir build
