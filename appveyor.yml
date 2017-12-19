@@ -21,7 +21,7 @@ install:
   - IF NOT EXIST %APPVEYOR_BUILD_FOLDER%\blender-build\lib svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14
   - cd build
   - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DWITH_PYTHON_INSTALL=OFF -DPYTHON_VERSION=3.6 ../blender
-  - devenv.exe Blender.sln /Build Release /Project INSTALL
+#  - devenv.exe Blender.sln /Build Release /Project INSTALL
 
 cache:
   - blender-build\lib
