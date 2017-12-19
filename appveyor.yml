@@ -7,7 +7,8 @@ environment:
     - PYTHON: "C:\\Python36"
 
 install:
-  - "%VS140COMNTOOLS%../IDE/devenv.exe"
+  - set PATH=%VS140COMNTOOLS%..\IDE;%PATH%
+  - devenv.exe
   - mkdir blender-build
   - cd blender-build
   - mkdir build
@@ -20,4 +21,4 @@ install:
   - svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14
   - cd build
   - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DWITH_PYTHON_INSTALL=OFF -DPYTHON_VERSION=3.6 ../blender
-  - "%VS140COMNTOOLS%../IDE/devenv.exe" Blender.sln /Build Release /Project INSTALL
+  - devenv.exe Blender.sln /Build Release /Project INSTALL
