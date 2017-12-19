@@ -16,7 +16,7 @@ install:
   - git submodule foreach git checkout master
   - git submodule foreach git pull --rebase origin master
   - cd ..
-  - svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14  lib/win64_vc14
+  - svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14  lib/win64_vc14
   - cd build
-  - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DPYTHON_VERSION=3.6 ../blender
+  - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DWITH_PYTHON_INSTALL=OFF -DPYTHON_VERSION=3.6 ../blender
   - devenv Blender.sln /Build Release /Project INSTALL
