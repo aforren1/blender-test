@@ -9,7 +9,7 @@ environment:
 
 install:
   - set PATH=%VS140COMNTOOLS%..\IDE;%PATH%
-  - IF NOT EXIST %APPVEYOR_BUILD_FOLDER% mkdir blender-build
+  - IF NOT EXIST %APPVEYOR_BUILD_FOLDER%\blender-build mkdir blender-build
   - cd blender-build
   - mkdir build
   - git clone git://git.blender.org/blender.git
