@@ -7,7 +7,7 @@ environment:
     - PYTHON: "C:\\Python36"
 
 install:
-  - "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\devenv.exe"
+  - "%VS140COMNTOOLS%../IDE/devenv.exe"
   - mkdir blender-build
   - cd blender-build
   - mkdir build
