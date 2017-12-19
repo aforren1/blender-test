@@ -1,0 +1,22 @@
+image: Visual Studio 2015
+platform: x64
+configuration: Release
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python36-x64"
+
+install:
+  - mkdir blender-build
+  - cd blender-build
+  - mkdir build
+  - git clone git://git.blender.org/blender.git
+  - cd blender
+  - git submodule update --init --recursive
+  - git submodule foreach git checkout master
+  - git submodule foreach git pull --rebase origin master
+  - cd ..
+  - svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/win64_vc14  lib/win64_vc14
+  - cd build
+  - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DPYTHON_VERSION=3.6 ../blender
+  - devenv Blender.sln /Build Release /Project INSTALL
