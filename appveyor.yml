@@ -20,4 +20,4 @@ install:
   - svn checkout --quiet https://svn.blender.org/svnroot/bf-blender/trunk/lib/windows_vc14  lib/windows_vc14
   - cd build
   - cmake -DWITH_PLAYER=OFF -DWITH_PYTHON_MODULE=ON -DWITH_PYTHON_INSTALL=OFF -DPYTHON_VERSION=3.6 ../blender
-  - "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\devenv.exe" Blender.sln /Build Release /Project INSTALL
+  - "C:/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE/devenv.exe" Blender.sln /Build Release /Project INSTALL
